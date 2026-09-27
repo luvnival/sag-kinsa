@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paminaw Na Lang Ligi 😭</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ff4ecd,
+                #7c4dff,
+                #00d4ff,
+                #00e676
+            );
+            background-size: 400% 400%;
+            animation: backgroundMove 8s ease infinite;
+        }
+
+        .message {
+            position: relative;
+            z-index: 10;
+            padding: 18px 28px;
+
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff1493;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+            animation: pop 1s ease;
+        }
+
+        .emoji {
+            position: absolute;
+            top: -60px;
+            font-size: 30px;
+            animation: fall linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-60px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+
+            80% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="message">
+        paminaw na lng ligi 😭
+    </div>
+
+    <script>
+        function createEmoji() {
+            const emoji = document.createElement("div");
+
+            emoji.classList.add("emoji");
+            emoji.textContent = "🖕🏻";
+
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.fontSize = (20 + Math.random() * 25) + "px";
+
+            const duration = 2 + Math.random() * 4;
+            emoji.style.animationDuration = duration + "s";
+
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, duration * 1000);
+        }
+
+        // Start raining immediately
+        for (let i = 0; i < 35; i++) {
+            setTimeout(createEmoji, i * 100);
+        }
+
+        // Keep the rain going
+        setInterval(createEmoji, 180);
+    </script>
+
+</body>
+  </html>
+  
